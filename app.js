@@ -9,6 +9,11 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/blog')
+.then( () => console.log("connection reussie"))
+.catch( () => console.log("connection echec"))
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'twig');
