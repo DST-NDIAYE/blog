@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var Article =  require('./models/article.model.ts')
+// var Article =  require('./models/article.model.ts')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -17,16 +17,16 @@ mongoose.connect('mongodb://localhost:27017/blog')
 .catch( () => console.log("connection echec"))
 
 
-var myArticle = new Article({
-  name: "aaaaaaa" ,
-  content: "aaaaaa" ,
-  date : new Date() 
+// var myArticle = new Article({
+//   name: "aaaaaaa" ,
+//   content: "aaaaaa" ,
+//   date : new Date() 
   
-})
+// })
 
-myArticle.save()
-.then( () => console.log("Sauvegarde reussie"))
-.catch( () => console.log("sauvegard echec"))
+// myArticle.save()
+// .then( () => console.log("Sauvegarde reussie"))
+// .catch( () => console.log("sauvegard echec"))
 
 
 // view engine setup
