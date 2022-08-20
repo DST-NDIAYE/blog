@@ -19,8 +19,8 @@ mongoose.connect('mongodb://localhost:27017/blog')
 
 var myArticle = new Article({
   name: "aaaaaaa" ,
-  ontent: "aaaaaa" ,
-  Date : new Date() 
+  content: "aaaaaa" ,
+  date : new Date() 
   
 })
 
