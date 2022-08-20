@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 // var Article =  require('./models/article.model.ts')
+var Categorie = require('./models/categorie.model')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -15,6 +16,15 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/blog')
 .then( () => console.log("connection reussie"))
 .catch( () => console.log("connection echec"))
+
+for (let i = 0; i < 5; i++) {
+  var newCategorie= new Categorie({
+    title: "categorie " + i ,
+    description: " Diamou serigne Touba ndiaye Diamou serigne Touba ndiaye  "
+  })
+  
+  // newCategorie.save()
+}
 
 
 // var myArticle = new Article({

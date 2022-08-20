@@ -1,33 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var articles = require('../models/article.model.ts')
+// var articles = require('../models/article.model.ts') ;
+var articlesControllers = require('../controllers/article.controller.js') ;
+
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  // res.render('index', { title: 'Express' });
-  articles.find()
-    .then(articleRecu =>
-      res.render('index', { title: 'DST NDAYE', 'articles': articleRecu }))
-    .catch(err => console.log(err))
+router.get('/', articlesControllers.listesDesArticle  );
 
-});
+router.get('/article/:articleId', articlesControllers.getArticleById )
 
-
-router.get('/article/:articleId', (req, res) => {
-  articleId = req.params.articleId;
-  articles.findOne({ _id: articleId })
-    .then((singleArticleRecu) => {
-      res.render('single-article', { article: singleArticleRecu })
-      // res.render('index', { title: 'DST NDAYE' , 'articles' : articleRecu })}
-    }
-    )
-    .catch((err) => 
-    {
-      console.log(err);
-      res.redirect('/')
-    })
-  
-  // console.log(articleId);
-})
+router.get('/add-article' , articlesControllers.addArticle)
 
 module.exports = router;

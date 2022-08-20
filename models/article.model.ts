@@ -1,8 +1,10 @@
 
 const mongoose = require('mongoose');
 const ArticleSchema = mongoose.Schema({
-  name:  String,
+  title: String ,
+  categorie:  String,
   content: String,
+  image: String ,
   date: Date
 })
 
