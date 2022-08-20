@@ -1,0 +1,31 @@
+{% extends "layout.twig" %}
+
+
+{% block body %}
+	{% if article %}
+		<div class="row">
+			<div class="card col-md-3 m-2" style="width: 18rem;">
+				<img src="http://placehold.it/300x300" card-img-top" alt=" ">
+				<div class="card-body ">
+					<h5 class="card-title">
+						{{article.title}}
+					</h5>
+					<p class="card-text">
+						{{article.name}}
+					</p>
+					<p class="card-text">
+						{{article.content}}
+					</p>
+					<p class="card-text">
+						{{article.date}}
+					</p>
+					<a href="/" class="btn btn-primary">
+						retour
+					</a>
+				</div>
+			</div>
+		</div>
+
+	{% endif %}
+
+{% endblock %}

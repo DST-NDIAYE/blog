@@ -3,28 +3,31 @@ var router = express.Router();
 var articles = require('../models/article.model.ts')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   // res.render('index', { title: 'Express' });
   articles.find()
-  .then( articleRecu => 
-    res.render('index', { title: 'DST NDAYE' , 'articles' : articleRecu}))
-  .catch(err => console.log(err))
+    .then(articleRecu =>
+      res.render('index', { title: 'DST NDAYE', 'articles': articleRecu }))
+    .catch(err => console.log(err))
 
 });
 
 
 router.get('/article/:articleId', (req, res) => {
-    articleId  = req.params.articleId ;
-
-    articles.findOne({_id: articleId})
-    .then( articleRecu => 
-      console.log(articleRecu)
-      // res.render('index', { title: 'DST NDAYE' , 'articles' : articleRecu })
+  articleId = req.params.articleId;
+  articles.findOne({ _id: articleId })
+    .then((singleArticleRecu) => {
+      res.render('single-article', { article: singleArticleRecu })
+      // res.render('index', { title: 'DST NDAYE' , 'articles' : articleRecu })}
+    }
     )
-    .catch(err => console.log(err))
+    .catch((err) => 
+    {
+      console.log(err);
+      res.redirect('/')
+    })
   
-
-    console.log(articleId);
+  // console.log(articleId);
 })
 
 module.exports = router;
