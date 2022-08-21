@@ -26,7 +26,7 @@ exports.getArticleById = (req, res) => {
     // console.log(articleId);
 }
 
-exports.addArticle = (req, res) => {
+exports.FormAddArticle = (req, res) => {
     Categorie.find()
     .then( ( lesCategories )=>{
         res.render('add-article' , { Categories: lesCategories})
@@ -35,3 +35,23 @@ exports.addArticle = (req, res) => {
         res.redirect('/')
     }) ;
 }
+
+
+exports.AddArticle = (req, res) => {
+    var article = new articles({
+        ...req.body,
+        date: new Date() 
+    });
+    article.save()
+    .then(() =>{
+        console.log("ajoue avec succes");
+        res.redirect('/')
+    })
+    .catch(err => {
+        console.log("erreur dajoue " + err);
+    } )
+
+}
+
+
+

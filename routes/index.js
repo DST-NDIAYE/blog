@@ -9,6 +9,8 @@ router.get('/', articlesControllers.listesDesArticle  );
 
 router.get('/article/:articleId', articlesControllers.getArticleById )
 
-router.get('/add-article' , articlesControllers.addArticle)
+router.get('/add-article' , articlesControllers.FormAddArticle)
+
+router.post('/add-article' , articlesControllers.AddArticle )
 
 module.exports = router;

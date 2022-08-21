@@ -9,7 +9,17 @@ var Categorie = require('./models/categorie.model')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var bodyParser = require('body-parser')
+
+
 var app = express();
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
 
 
 const mongoose = require('mongoose');
@@ -40,6 +50,7 @@ for (let i = 0; i < 5; i++) {
 
 
 // view engine setup
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'twig');
 
