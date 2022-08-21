@@ -11,10 +11,18 @@
               <div class="card col-md-3 m-2" style="width: 18rem;">
             <img src="http://placehold.it/300x300" card-img-top" alt="">
             <div class="card-body ">
-              <h5 class="card-title"> {{article.title}} </h5>
-              <p class="card-text"> {{article.name}} </p>
-              <p class="card-text"> {{article.content}} </p>
-              <p class="card-text"> {{article.date}} </p>
+             	<h5 class="card-title">
+						{{article.title}}
+					</h5>
+					<p class="card-text">
+						{{article.categorie}}
+					</p>
+					<p class="card-text">
+						{{article.content}}
+					</p>
+					<p class="card-text">
+						{{article.date | date  }}
+					</p>
               <a href="article/{{article.id}}" class="btn btn-primary"> Afficher </a>
             </div>
           </div>
