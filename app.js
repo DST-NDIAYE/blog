@@ -10,9 +10,20 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var bodyParser = require('body-parser')
+var session = require('express-session')
+
 
 
 var app = express();
+
+var app = express()
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'Marseille100',
+  resave: false,
+  saveUninitialized: fals,
+  cookie: { secure: true }
+}))
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
