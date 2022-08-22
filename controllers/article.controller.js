@@ -44,7 +44,7 @@ exports.AddArticle = (req, res) => {
 
     var article = new articles({
         ...req.body,
-        image: req.file.filename ,
+        image: `${req.protocol}://${req.get('host')}/images/${req.file.filename}` ,
         date: new Date() 
     });
     console.log(article) ;
