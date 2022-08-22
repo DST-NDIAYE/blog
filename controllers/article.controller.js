@@ -1,6 +1,7 @@
 const articles = require('../models/article.model.ts');
 const Categorie = require('../models/categorie.model');
 
+
 exports.listesDesArticle = (req, res, next) => {
     // res.render('index', { title: 'Express' });
     articles.find()
@@ -43,8 +44,10 @@ exports.AddArticle = (req, res) => {
 
     var article = new articles({
         ...req.body,
+        image: req.file.filename ,
         date: new Date() 
     });
+    console.log(article) ;
     article.save()
     .then(() =>{
         console.log("ajoue avec succes");
