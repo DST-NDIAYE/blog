@@ -38,6 +38,9 @@ exports.FormAddArticle = (req, res) => {
 
 
 exports.AddArticle = (req, res) => {
+   
+    console.log(req.file)
+
     var article = new articles({
         ...req.body,
         date: new Date() 
