@@ -2,7 +2,22 @@
 
 {% block body %}
 
-	<form action="/add-article" method="post" enctype="multipart/form-data" >
+	<h1>
+		Ajouter un article
+	</h1>
+	{% if success %}
+		<div class="alert alert-success" role="alert">
+			{{success}}
+		</div>
+	{% endif %}
+	{% if error %}
+		<div class="alert alert-danger" role="alert">
+			[[ error ]]
+		</div>
+	{% endif %}
+
+
+	<form action="/add-article" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<label class="form-label" for="title">
 				title
@@ -36,7 +51,7 @@
 			<label class="form-label" for="image">
 				Image
 			</label>
-			<input type="file" class="form-control" name="image" id="image" placeholder="image" >
+			<input type="file" class="form-control" name="image" id="image" placeholder="image">
 		</div>
 		<button type="submit" class="btn btn-primary mt-3">Ajouter</button>
 	</form>

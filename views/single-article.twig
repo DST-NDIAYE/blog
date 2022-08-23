@@ -4,8 +4,8 @@
 {% block body %}
 	{% if article %}
 		<div class="row">
-			<div class="card col-md-3 m-2" style="width: 18rem;">
-				<img src="{{ article.image }}" card-img-top" alt=" ">
+			<div class="card col-md-3 m-2" style="width: 70%;">
+				<img src="{{ article.image }}" card-img-top" alt=" "  style="height: 30%">
 				<div class="card-body ">
 					<h5 class="card-title">
 						{{article.title}}
@@ -17,7 +17,7 @@
 						{{article.content}}
 					</p>
 					<p class="card-text">
-						{{article.date | date("d-m-y- ")  }}
+						publier le 	{{article.date | date("d-m-y  H:m:s")}}
 					</p>
 					<a href="/" class="btn btn-primary">
 						retour
