@@ -60,6 +60,11 @@ app.use(session({
 
 app.use(flash());
 
+app.use(function(req, res, next){ 
+  res.locals.errorFormValidator = req.flash('errorFormValidator');
+  next();
+});
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'twig');
