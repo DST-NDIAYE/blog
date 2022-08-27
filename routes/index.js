@@ -14,4 +14,6 @@ router.get('/add-article' , articlesControllers.FormAddArticle)
 
 router.post('/add-article' , multerConfig , articlesControllers.AddArticle )
 
+router.get('/edit-article' , multerConfig , articlesControllers.EditArticle)
+
 module.exports = router;
