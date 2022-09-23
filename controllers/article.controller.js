@@ -29,14 +29,16 @@ exports.getArticleById = (req, res) => {
 
 exports.FormAddArticle = (req, res) => {
     Categorie.find()
-    .then( ( lesCategories )=>{
-        res.render('add-article' , { Categories: lesCategories , 
-        success: req.flash('success') , 
-        error : req.flash('error')})
-    })
-    .catch( (  ) =>{
-        res.redirect('/')
-    }) ;
+        .then((lesCategories) => {
+            res.render('add-article', {
+                Categories: lesCategories,
+                success: req.flash('success'),
+                error: req.flash('error')
+            })
+        })
+        .catch(() => {
+            res.redirect('/')
+        });
 }
 
 
@@ -44,19 +46,19 @@ exports.AddArticle = (req, res) => {
     // console.log(req.file)
     var article = new articles({
         ...req.body,
-        image: `${req.protocol}://${req.get('host')}/images/${req.file.filename}` ,
-        date: new Date() 
+        image: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+        date: new Date()
     });
     // console.log(article) ;
-    article.save( (err , article) =>{
+    article.save((err, article) => {
 
         if (err) {
-            req.flash('error' , ' Il ya une erreur lors de l\'ajoue de l\érticle ')
+            req.flash('error', ' Il ya une erreur lors de l\'ajoue de l\érticle ')
             return res.redirect('/add-article')
         }
         req.flash('success', ' L`\article a ete ajouter avec succes')
         return res.redirect('/add-article')
-    } )
+    })
     // .then(() =>{
     //     console.log("ajoue avec succes");
     //     // res.redirect('/')
@@ -64,6 +66,47 @@ exports.AddArticle = (req, res) => {
     // .catch(err => {
     //     console.log("erreur dajoue " + err);
     // } )
+
+}
+exports.EditArticle = (req, res) => {
+    articleId = req.params.articleId;
+    articles.findOne({ _id: articleId }, (err, article) => {
+        if (err) {
+            console.log(err);
+            req.flash('error', err.message);
+            return res.redirect('/')
+        }
+        Categorie.find((err, Categorie) => {
+            if (err) {
+                console.log(err);
+                req.flash('error', err.message);
+                return res.redirect('/')
+            }
+            return res.render('edit-article', { Categories: Categorie, article: article });
+        })
+    })
+
+    // Categorie.find((err, Categories) => {
+    //     if (err) {
+    //         console.log(err);
+    //         req.flash('error', err.message);
+    //         return res.redirect('/')
+    //     }
+
+    //     res.render('edit-article', { categories: Categories, articles: articles });
+    // })
+
+
+    //     .then((singleArticleRecu) => {
+    //         res.render('edit-article', { article: singleArticleRecu })
+    //         // res.render('index', { title: 'DST NDAYE' , 'articles' : articleRecu })}
+    //     }
+    //     )
+    //     .catch((err) => {
+    //         console.log(err);
+    //         res.redirect('/')
+    //     })
+
 
 }
 
